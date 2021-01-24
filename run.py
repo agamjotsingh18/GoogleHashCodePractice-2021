@@ -2,6 +2,12 @@ def process_input(processedInput):
     totalPizza, twoMembers, threeMembers, fourMembers = tuple(int(value) for value in processedInput[:4])
     pizzaTypes = processedInput[4]
     print(totalPizza, twoMembers, threeMembers, fourMembers, pizzaTypes)
+    ingredientMap = {}
+    for pizzaType in pizzaTypes:
+        for ingredient in pizzaType.split(' ')[1:]:
+                ingredientMap[ingredient] = ingredientMap.get(ingredient, 0) + 1
+    
+    print(ingredientMap)
 
 def fetch_input():
     pizzaTypes = []
@@ -12,6 +18,6 @@ def fetch_input():
         pizzaTypes.append(line)
     return (totalPizza, twoMembers, threeMembers, fourMembers, pizzaTypes)
     
-if __name__ == "__main__":
+if __name__ == '__main__':
     processedInput = fetch_input()
     process_input(processedInput)
